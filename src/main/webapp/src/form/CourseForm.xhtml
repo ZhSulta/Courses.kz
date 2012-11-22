@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+ 
+<h:head></h:head>
+<h:body>
+  	<div class="container-fluid">
+  	      <div class="row-fluid">
+			<div class="span7">
+				<h:form enctype="multipart/form-data">		
+				<h:panelGrid columns="2" cellpadding="10" id="panel-signup">					
+	          		<!-- enable focus component -->
+		  			<p:focus context="panel-signup" />
+		  			
+		  			<h:outputText value="Course name: " />
+			  		<p:inputText id="name" required="true" label="name"
+						size="40" requiredMessage="Please enter your username."
+						value="#{courseBean.name}">
+					</p:inputText>
+					<p:watermark for="name" value="Course name *" />
+					<p:message for="name" />
+					
+					<h:outputText value="Title: " />
+			  		<p:inputText id="smallDescription" required="true" label="smallDescription"
+						size="40" requiredMessage="Write small description about your project."
+						value="#{courseBean.smallDescription}">
+					</p:inputText>
+					<p:watermark for="smallDescription" value="Small description *" />
+					<p:message for="smallDescription" />
+					
+					<h:outputText value="Description: " />
+			  		<p:inputText id="description" required="true" label="description"
+						size="40" requiredMessage="Write description about your project."
+						value="#{courseBean.description}">
+					</p:inputText>
+					<p:watermark for="description" value="Long description *" />
+					<p:message for="description" />
+					
+					<h:outputText value="University: " />
+			  		<p:inputText id="university" label="university"
+						size="40"
+						value="#{courseBean.university}">
+					</p:inputText>
+					<p:watermark for="university" value="university *" />
+					<h:outputText value="" />
+					
+					<h:outputText value="Duration: " />
+			  		<p:inputText id="duration" required="true" label="duration"
+						size="40" requiredMessage="Write description about your project."
+						value="#{courseBean.duration}">
+					</p:inputText>
+					<p:watermark for="description" value="Duration in week *" />
+					<p:message for="duration" />
+					
+					<h:outputText value="Course start date: " />
+					<p:calendar effect="fadeIn" value="#{courseBean.startDate}"/>  
+					 
+					<h:outputText value="Upload file " />	
+					<p:fileUpload fileUploadListener="#{courseBean.upload}"  
+				            mode="advanced"  
+				            update="messages"  
+				            auto="true"  
+				            sizeLimit="100000"   
+				            allowTypes="/(\.|\/)(gif|jpe?g|png)$/"/>  
+				  
+				    
+									  
+				    <p:growl id="messages" showDetail="true"/>  
+				    <h:outputText value="" />
+					
+				    <h:panelGroup style="display:block; text-align:center">
+				    	<p:editor value="#{courseBean.syllabus}" />
+				    </h:panelGroup>
+				    
+					    <p:commandButton value="Create" style="margin:20px"
+						action="#{courseBean.save}" ajax="false" />
+ 					</h:panelGrid>
+		  		</h:form>
+		  	</div>
+		  </div>
+	</div>
+
+ 
+</h:body>
+</html>

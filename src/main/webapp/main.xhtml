@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >   
+    <h:body>
+    	<ui:composition template="static/template/example.xhtml">
+  <ui:define name="content">
+   <div class="container">   
+	<div class="row-fluid">		
+	<ul class="thumbnails">
+		
+		<section class="highlighted-courses"> 
+			<section class="courses">			            
+			<ui:repeat var="i" value="#{mainBean.allCourses}">						
+	 			<li class="span4">
+	 			<h:form>	
+	 				<h:commandLink action="#{aboutCourseBean.aboutCourse}" value="#{i.name}" >		
+	 					<f:param name="username" value="i.course_id" />	    					 
+	 				</h:commandLink>   													 				 
+				</h:form> 	 	 													
+						<article class="course"> 									
+							<div class="inner-wrapper">
+								<a href="#"> 
+									<header class="course-preview"> 
+									<hgroup> <h2> #{i.name}</h2> </hgroup>
+									<div class="info-link">➔</div> </header> 
+								</a>
+								<section class="info">
+									<a href="#"> 
+										<div class="cover-image"> 
+											<img src="./static/img/course_image.1b653ea8b15b.jpg" /> 
+										</div> 
+										<div class="desc"> <p>#{i.smallDescription}</p> </div> 
+									</a>
+									<div class="bottom">												
+										<a href="#" class="university">#{i.university}</a> 
+										<span class="start-date">#{i.startDate}</span> 
+									</div> 
+								</section>
+							</div> 
+							<div class="meta-info"> 
+								<p class="university">#{i.university}</p> 
+							</div>  
+						</article> 						
+					</li>				
+			</ui:repeat>
+			</section>
+		</section>
+		</ul>
+		 							
+	</div>  
+		</div>
+	</ui:define> 
+</ui:composition> 
+</h:body>     
+</html>

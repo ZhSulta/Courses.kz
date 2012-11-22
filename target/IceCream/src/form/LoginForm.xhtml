@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+ 
+<h:head></h:head>
+<h:body>
+
+ 
+<div class="container-fluid"> 
+     
+      <div class="row-fluid">
+			<div class="span7">
+		<h:form>		
+			<p:panel id="panel-signup">
+	          	<!-- enable focus component -->
+		  		<p:focus context="panel-signup" />
+		  		<h:outputText value="Username: " />
+		  		<p:inputText id="username" required="true" label="username"
+					size="40" requiredMessage="Please enter your username."
+					value="#{loginBean.username}">
+				</p:inputText>
+				<p:watermark for="username" value="Username *" />
+				<p:message for="username" />
+				<h:outputText value="Password: " />
+				<p:password id="password" required="true" label="password" size="40"
+					requiredMessage="Please enter your password."
+					value="#{loginBean.password}"
+					maxlength="20">
+				</p:password>
+				<p:watermark for="password" value="Password *" />
+				<p:message for="password" />
+				
+				<p:commandButton value="Login" style="margin:20px"
+				action="#{loginBean.login}" ajax="false" />
+		  	</p:panel>		
+		</h:form>
+	</div>
+	<div class="span5">
+		<p:panel>
+			<p>No Account Yet?</p>
+			<p><a href="register.xhtml">Sign up </a> today.</p>
+		</p:panel>	
+	</div>
+	</div><!--/row-->
+</div>       
+ 
+</h:body>
+</html>
+ 

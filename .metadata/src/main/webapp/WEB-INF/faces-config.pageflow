@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf13535848308100" configfile="/IceCream/src/main/webapp/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="src/createCourse.xhtml" x="122" y="178" id="pf13535918917831" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf13535918917842" path="/src/createCourse.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="src/Course.xhtml" x="338" y="178" id="pf13535918917843" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf13535918917842" path="/src/Course.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="main.xhtml" x="554" y="370" id="pf13535918917844" referenceLink="//@navigationRule.4/@navigationCase.0/@toViewId|" outlinks="pf13535918917845" inlinks="pf13535918917846" path="/main.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="src/AboutCourse.xhtml" x="770" y="370" id="pf13535918917847" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf13535918917845" path="/AboutCourse.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="register.xhtml" x="122" y="562" id="pf13535918917848" referenceLink="//@navigationRule.3/@fromViewId|" outlinks="pf13535918917849" path="/register.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="338" y="562" id="pf135359189178410" referenceLink="//@navigationRule.4/@fromViewId|" outlinks="pf13535918917846 pf135359195408014" inlinks="pf13535918917849" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf135359195408015" referenceLink="//@navigationRule.4/@navigationCase.1/@toViewId|" inlinks="pf135359195408014" path="login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" id="pf13535941077453" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf13535941077454" path="/index.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="fail.xhtml" id="pf13535941077455" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf13535941077454" path="/fail.xhtml"/>
+  <links id="pf13535918917842" target="pf13535918917843" source="pf13535918917831" outcome="success" redirect="true"/>
+  <links id="pf13535918917845" target="pf13535918917847" source="pf13535918917844" outcome="aboutCourse" redirect="true"/>
+  <links id="pf13535918917849" target="pf135359189178410" source="pf13535918917848" outcome="success" redirect="true"/>
+  <links id="pf13535918917846" target="pf13535918917844" source="pf135359189178410" outcome="success" redirect="true"/>
+  <links id="pf135359195408014" target="pf135359195408015" source="pf135359189178410" outcome="fail"/>
+  <links id="pf13535941077454" target="pf13535941077455" source="pf13535941077453" outcome="login" redirect="true"/>
+</pageflow:Pageflow>

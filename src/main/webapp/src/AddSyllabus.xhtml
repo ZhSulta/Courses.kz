@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"   
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      >  
+
+<h:body>
+   	<ui:composition template="/static/template/example1.xhtml">
+	  	<ui:define name="content">
+	  	<div class="container-fluid">
+	      <div class="row-fluid">
+	        	<div class="container-fluid">
+	        	<div class="span12">
+	  	    		<div class="row-fluid">  	    																			
+							<div>
+								<h:form>
+								   <p:editor value="#{courseBean.syllabus}" />
+								   <p:commandButton value="Create" style="margin:20px" action="#{courseBean.save}" ajax="false" /> 
+								</h:form>
+							</div>			
+						</div>
+					</div>
+				</div>			               
+	      </div><!--/row-->
+		 </div>
+		</ui:define> 
+	</ui:composition> 
+</h:body>     
+</html>

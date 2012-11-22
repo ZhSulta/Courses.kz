@@ -1,0 +1,82 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 							http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+ 							http://www.springframework.org/schema/tx
+ 							http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+ 							http://www.springframework.org/schema/context
+ 							http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+                   
+	
+	
+	<context:component-scan base-package="kz.sdu.bean" />
+	<bean id="courseBean" class="kz.sdu.bean.CourseBean" scope="session"/>
+	<bean id="loginBean" class="kz.sdu.bean.LoginBean" scope="session"/>
+	<bean id="mainBean" class="kz.sdu.bean.MainBean" scope="request"/>
+	<bean id="inCourseBean" class="kz.sdu.bean.InCourseBean" scope="request"/>
+	<bean id="aboutCourseBean" class="kz.sdu.bean.AboutCourseBean" scope="request"/>
+	<bean id="exampleBean" class="kz.sdu.bean.ExampleBean" scope="request"/>
+	
+	
+	<bean id="courseService" class="kz.my.pro.service.impl.CourseServiceImpl">
+        <property name="courseDAOImpl" ref="courseDAOImpl" />
+    </bean>
+	
+	<bean id="courseDAOImpl" class="kz.my.pro.dao.impl.CourseDAOImpl">
+		<property name="sessionFactory" ref = "sessionFactory"></property>
+	</bean>
+	
+	
+	<bean id="userService" class="kz.my.pro.service.impl.UserServiceImpl">
+        <property name="userDAOImpl" ref="userDAOImpl" />
+    </bean>
+	
+	<bean id="userDAOImpl" class="kz.my.pro.dao.impl.UserDAOImpl">
+		<property name="sessionFactory" ref = "sessionFactory"></property>
+	</bean>
+    
+	
+	<bean name="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="org.postgresql.Driver"/>
+		<property name="url" value="jdbc:postgresql://localhost:5432/SpringRoo"/>
+		<property name="username" value="postgres"/>
+		<property name="password" value="admin"/>
+	</bean>                               
+	
+	<bean name="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="annotatedClasses">
+			<list>
+				<value>kz.my.pro.entity.Users</value>
+				<value>kz.my.pro.entity.Answers</value>
+				<value>kz.my.pro.entity.Comments</value>
+				<value>kz.my.pro.entity.Courses</value>
+				<value>kz.my.pro.entity.MyCourses</value>
+				<value>kz.my.pro.entity.Questions</value>
+				<value>kz.my.pro.entity.Videos</value>
+				<value>kz.my.pro.entity.Wikies</value>
+				<value>kz.my.pro.entity.Announcements</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+				<prop key="hibernate.current_session_context_class">thread</prop>
+				<prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+	</bean>
+	
+    
+    <tx:annotation-driven/>
+
+    <bean id="transactionManager"  class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    
+</beans>
